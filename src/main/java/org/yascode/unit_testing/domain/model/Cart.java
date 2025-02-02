@@ -10,8 +10,10 @@ import java.util.Map;
 @Setter
 public class Cart {
     private Map<Product, Line> lines;
+    private double reduction;
 
     public Cart() {
         this.lines = new HashMap<>();
+        this.reduction = 0;
     }
 }

@@ -65,6 +65,21 @@ class CartServiceImplTest {
     }
 
     @Test
+    @DisplayName("Should calculate cart total by applying discount of 10")
+    void calculate_cart_total_by_applying_discount_of_10() {
+        when(lineServiceMock.calculateTotalPrice(any(Line.class))).thenAnswer(invocation -> {
+            Line line = invocation.getArgument(0);
+            return line.getQuantity() * line.getProduct().getPrice();
+        });
+
+        cart.setReduction(10);
+
+        double totalPrice = cartService.calculateTotalPrice(cart);
+
+        assertEquals(63.0, totalPrice);
+    }
+
+    @Test
     @DisplayName("Should add one product to cart")
     void add_one_product() {
         cartService.add(cart, p3, 10);

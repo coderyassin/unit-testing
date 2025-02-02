@@ -60,7 +60,7 @@ public class CartServiceImpl implements CartService {
                 .values()
                 .stream()
                 .mapToDouble(lineService::calculateTotalPrice)
-                .sum();
+                .sum() - cart.getReduction();
     }
 
     @Override
