@@ -127,7 +127,23 @@ class CartServiceImplTest {
         assertEquals(2, cart.getLines().size());
     }
 
+    @Test
+    @DisplayName("It is not acceptable to remove a product that does not exist")
     void remove_product_not_exist_throw_IllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> cartService.decrease(cart, p5));
+    }
+
+
+    @Test
+    @DisplayName("Cart is not empty")
+    void cart_is_not_empty() {
+        assertEquals(false, cartService.isCartEmpty(cart));
+    }
+
+    @Test
+    @DisplayName("Cart is empty")
+    void cart_is_empty() {
+        var emptyCart = new Cart();
+        assertEquals(true, cartService.isCartEmpty(emptyCart));
     }
 }
