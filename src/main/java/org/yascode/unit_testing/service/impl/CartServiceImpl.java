@@ -19,7 +19,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public Line add(Cart cart, Product product, int quantity) {
         if (Objects.isNull(product)) {
-            throw new IllegalArgumentException("Product cannot be null");
+            throw new NullPointerException("Product cannot be null");
         }
         if (quantity <= 0) {
             throw new IllegalArgumentException("Quantity must be positive");
